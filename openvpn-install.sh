@@ -159,7 +159,7 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 		esac
 	done
 else
-	clear
+	#clear
 	echo 'Welcome to this quick OpenVPN "road warrior" installer'
 	echo ""
 	# OpenVPN setup and first user creation
@@ -200,15 +200,9 @@ else
 	CLIENT="client"
 	echo ""
 	echo "Okay, that was all I needed. We are ready to setup your OpenVPN server now"
-	#read -n1 -r -p "Press any key to continue..."
-		if [[ "$OS" = 'debian' ]]; then
-		apt-get update
-		apt-get install openvpn iptables openssl -y
-	else
-		# Else, the distro is CentOS
-		yum install epel-release -y
-		yum install openvpn iptables openssl wget -y
-	fi
+	apt-get update
+	apt-get install openvpn iptables openssl -y
+
 	# An old version of easy-rsa was available by default in some openvpn packages
 	if [[ -d /etc/openvpn/easy-rsa/2.0/ ]]; then
 		rm -f /etc/openvpn/easy-rsa/2.0/
