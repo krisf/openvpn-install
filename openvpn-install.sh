@@ -168,18 +168,21 @@ else
 	echo ""
 	echo "First I need to know the IPv4 address of the network interface you want OpenVPN"
 	echo "listening to."
-	read -p "IP address: " -e -i $IP IP
+	#read -p "IP address: " -e -i $IP IP
 	echo ""
 	echo "What port do you want for OpenVPN?"
-	read -p "Port: " -e -i 1194 PORT
+	#read -p "Port: " -e -i 1194 PORT
+	PORT=1194
 	echo ""
 	echo "Do you want OpenVPN to be available at port 53 too?"
 	echo "This can be useful to connect under restrictive networks"
-	read -p "Listen at port 53 [y/n]: " -e -i n ALTPORT
+	#read -p "Listen at port 53 [y/n]: " -e -i n ALTPORT
+	ALTPORT="n"
 	echo ""
 	echo "Do you want to enable internal networking for the VPN?"
 	echo "This can allow VPN clients to communicate between them"
-	read -p "Allow internal networking [y/n]: " -e -i n INTERNALNETWORK
+	#read -p "Allow internal networking [y/n]: " -e -i n INTERNALNETWORK
+	INTERNALNETWORK="n"
 	echo ""
 	echo "What DNS do you want to use with the VPN?"
 	echo "   1) Current system resolvers"
@@ -188,14 +191,16 @@ else
 	echo "   4) NTT"
 	echo "   5) Hurricane Electric"
 	echo "   6) Google"
-	read -p "DNS [1-6]: " -e -i 1 DNS
+	#read -p "DNS [1-6]: " -e -i 1 DNS
+	DNS=2
 	echo ""
 	echo "Finally, tell me your name for the client cert"
 	echo "Please, use one word only, no special characters"
-	read -p "Client name: " -e -i client CLIENT
+	#read -p "Client name: " -e -i client CLIENT
+	CLIENT="client"
 	echo ""
 	echo "Okay, that was all I needed. We are ready to setup your OpenVPN server now"
-	read -n1 -r -p "Press any key to continue..."
+	#read -n1 -r -p "Press any key to continue..."
 		if [[ "$OS" = 'debian' ]]; then
 		apt-get update
 		apt-get install openvpn iptables openssl -y
